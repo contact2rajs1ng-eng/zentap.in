@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Zentap.in</title>
+<meta name="description" content="Get in touch with Zentap to order a custom NFC card, get a corporate quote, or ask a question.">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h1>Let's design your card.</h1>
+    <p>Fill in a few details below and it opens straight into a WhatsApp chat with everything pre-filled — nothing gets lost in an inbox.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="item">
+        <div>
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/918853797074" target="_blank" rel="noopener">+91 88537 97074</a>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:contact2taki@gmail.com">contact2taki@gmail.com</a>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <h4>Instagram</h4>
+          <a href="https://www.instagram.com/zentap.in/" target="_blank" rel="noopener">@zentap.in</a>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <h4>Based in</h4>
+          <p>India</p>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <h4>Response time</h4>
+          <p>Usually within a few hours on WhatsApp</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form id="contact-form">
+        <div class="form-field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" required placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label for="business">Business / profession</label>
+          <input type="text" id="business" placeholder="e.g. Real estate agent, café owner">
+        </div>
+        <div class="form-field">
+          <label for="product">What are you interested in?</label>
+          <select id="product">
+            <option>Metal NFC Card</option>
+            <option>PVC NFC Card</option>
+            <option>Smart Standee</option>
+            <option>Corporate Bulk Order</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us what you'd like on your card / profile"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-copper btn-block">Continue on WhatsApp</button>
+          <button type="button" id="email-submit-btn" class="btn btn-ghost-light btn-block">Send via Email</button>
+        </div>
+        <p class="form-note">WhatsApp opens with your details filled in — you just hit send. Email opens your own mail app with the same details, addressed to us. Nothing is stored on this site.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<a class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+   href="https://wa.me/918853797074?text=Hi%20Zentap%2C%20I%20have%20a%20question">
+  <svg viewBox="0 0 32 32"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.393.71 4.63 1.933 6.5L4 29l7.687-1.898A11.93 11.93 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3zm0 21.75c-2.06 0-3.98-.6-5.594-1.635l-.402-.256-4.563 1.127 1.153-4.448-.264-.418A9.71 9.71 0 0 1 6.25 15c0-5.385 4.365-9.75 9.751-9.75S25.75 9.615 25.75 15 21.386 24.75 16.001 24.75zm5.373-7.312c-.294-.148-1.74-.858-2.01-.956-.27-.099-.466-.148-.663.148-.196.295-.76.956-.932 1.153-.172.196-.343.221-.637.074-.294-.148-1.242-.458-2.366-1.463-.874-.78-1.464-1.744-1.636-2.038-.172-.295-.018-.454.13-.601.133-.133.294-.344.442-.516.147-.172.196-.295.294-.492.098-.196.049-.369-.024-.516-.074-.148-.663-1.6-.909-2.192-.239-.574-.482-.497-.663-.507-.172-.008-.368-.01-.564-.01-.196 0-.516.074-.786.369-.27.295-1.03 1.006-1.03 2.454 0 1.448 1.055 2.848 1.202 3.045.147.196 2.076 3.17 5.03 4.443.703.303 1.251.484 1.679.62.705.224 1.347.192 1.855.117.566-.085 1.74-.712 1.985-1.4.245-.688.245-1.278.172-1.4-.074-.123-.27-.196-.564-.344z"/></svg>
+</a>
+
+<script type="module" src="assets/js/firebase-init.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+  // Zero-backend contact form: builds a WhatsApp message from the fields
+  // and opens a chat with your business number. Replace 918853797074
+  // below (and in partials/header.html + partials/footer.html) with your
+  // real WhatsApp number in international format, no + or spaces.
+  const WHATSAPP_NUMBER = '918853797074';
+  const CONTACT_EMAIL = 'contact2taki@gmail.com';
+
+  function readFormFields() {
+    return {
+      name: document.getElementById('name').value.trim(),
+      business: document.getElementById('business').value.trim(),
+      product: document.getElementById('product').value,
+      message: document.getElementById('message').value.trim(),
+    };
+  }
+
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const { name, business, product, message } = readFormFields();
+
+    let text = `Hi Zentap, I'd like to get in touch.\n\nName: ${name}`;
+    if (business) text += `\nBusiness: ${business}`;
+    text += `\nInterested in: ${product}`;
+    if (message) text += `\nMessage: ${message}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  });
+
+  document.getElementById('email-submit-btn').addEventListener('click', function () {
+    const { name, business, product, message } = readFormFields();
+
+    const subject = `Enquiry from ${name || 'the Zentap website'}`;
+    let body = `Name: ${name}`;
+    if (business) body += `\nBusiness: ${business}`;
+    body += `\nInterested in: ${product}`;
+    if (message) body += `\nMessage: ${message}`;
+
+    const url = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
+  });
+</script>
+</body>
+</html>
