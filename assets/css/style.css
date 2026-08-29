@@ -5,13 +5,13 @@
 
 :root{
   /* ---- Brand palette (change these to re-theme the entire site) ---- */
-  --ink:        #0B1220;   /* near-black navy — dark backgrounds */
-  --ink-soft:   #141D2E;   /* panel on dark bg */
-  --graphite:   #1B2333;   /* card / border on dark */
+  --ink:        #000000;   /* pure black — dark backgrounds */
+  --ink-soft:   #121212;   /* panel on dark bg */
+  --graphite:   #1A1A1A;   /* card / border on dark */
   --paper:      #F6F4EF;   /* warm off-white — light backgrounds */
   --paper-dim:  #ECE8DE;   /* light panel */
   --line:       #DCD6C8;   /* hairline on light */
-  --line-dark:  #2A3348;   /* hairline on dark */
+  --line-dark:  #2B2B2B;   /* hairline on dark */
   --copper:     #B07A2E;   /* primary accent — Zentap brand gold */
   --copper-lt:  #D4AF6A;   /* lighter gold for gradients/hover */
   --copper-dk:  #7A5720;   /* deep bronze */
@@ -24,8 +24,8 @@
   --radius-md: 14px;
   --radius-lg: 26px;
 
-  --shadow-1: 0 1px 2px rgba(11,18,32,.06), 0 8px 24px rgba(11,18,32,.06);
-  --shadow-2: 0 20px 60px rgba(11,18,32,.18);
+  --shadow-1: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+  --shadow-2: 0 20px 60px rgba(0,0,0,.18);
 
   --wrap: 1180px;
 }
@@ -129,7 +129,7 @@ section{ padding:96px 0; }
    ========================================================================== */
 #site-header{
   position:sticky; top:0; z-index:100;
-  background:rgba(11,18,32,.86);
+  background:rgba(0,0,0,.86);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line-dark);
 }
@@ -802,7 +802,7 @@ section{ padding:96px 0; }
    ========================================================================== */
 .auth-overlay{
   position:fixed; inset:0; z-index:300;
-  background:rgba(11,18,32,.6);
+  background:rgba(0,0,0,.6);
   backdrop-filter:blur(3px);
   display:flex; align-items:center; justify-content:center;
   padding:20px;
