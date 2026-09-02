@@ -122,6 +122,8 @@ section{ padding:96px 0; }
 }
 .btn-ghost-light:hover{ border-color:var(--copper); background:rgba(193,121,63,.06); }
 .btn-sm{ padding:10px 18px; font-size:13.5px; }
+.wa-nav-btn{ display:inline-flex; align-items:center; justify-content:center; }
+.wa-nav-icon{ display:none; }
 .btn-block{ width:100%; }
 
 /* ==========================================================================
@@ -187,7 +189,10 @@ section{ padding:96px 0; }
   .nav-links a.active{ background:rgba(46,95,224,.14); color:var(--copper-lt); }
   .nav-toggle{ display:flex; }
   .nav-cta .btn span.long{ display:none; }
-  .nav-cta > .icon-btn{ display:none; }
+  .nav-cta > #nav-back-btn{ display:none; }
+  .wa-nav-btn{ padding:0; width:38px; height:38px; border-radius:50%; }
+  .wa-nav-text{ display:none; }
+  .wa-nav-icon{ display:block; }
   .mobile-only-link{
     display:block; width:100%; text-align:left;
     padding:14px 24px; border:none; background:transparent;
@@ -825,6 +830,7 @@ section{ padding:96px 0; }
 }
 .auth-close:hover{ background:var(--line); }
 .auth-tabs{ display:flex; gap:4px; background:var(--paper-dim); border-radius:99px; padding:4px; margin-bottom:22px; }
+.auth-tabs[hidden]{ display:none; }
 .auth-tab{
   flex:1; border:none; background:transparent; padding:9px 0; border-radius:99px;
   font-weight:600; font-size:13.5px; color:var(--muted); transition:background .15s ease, color .15s ease;
@@ -836,3 +842,27 @@ section{ padding:96px 0; }
 }
 .auth-divider::before,.auth-divider::after{ content:''; flex:1; height:1px; background:var(--line); }
 .auth-social{ display:flex; flex-direction:column; gap:10px; }
+
+/* logged-in account view (shown inside the same panel once signed in) */
+#account-view{ text-align:center; padding-top:6px; }
+.account-avatar{
+  width:64px; height:64px; margin:0 auto 16px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--copper-lt), var(--copper-dk));
+  color:#fff;
+  font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.account-name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px; color:var(--ink); }
+.account-email{ font-size:13.5px; color:var(--muted); margin-bottom:22px; }
+
+/* profile nav icon once signed in: shows an initial instead of the person outline */
+.icon-btn.is-signed-in{
+  background:linear-gradient(135deg, var(--copper-lt), var(--copper-dk));
+  border-color:transparent;
+  color:#fff;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px;
+}
+.icon-btn.is-signed-in svg{ display:none; }
+.icon-btn-initial{ display:none; }
+.icon-btn.is-signed-in .icon-btn-initial{ display:block; }

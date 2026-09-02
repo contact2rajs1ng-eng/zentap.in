@@ -57,10 +57,9 @@ function wireBackButton() {
 // (Email/Password) + Firestore (to store each account) + EmailJS (to notify
 // you by email whenever someone creates an account).
 //
-// Facebook and Phone sign-in aren't turned on in Firebase yet (Facebook
-// needs a Facebook Developer App + review; Phone needs Firebase's paid
-// plan) — tapping those still falls back to WhatsApp for now, same as
-// before, so no interest is lost while those are pending.
+// Phone sign-in isn't turned on in Firebase yet (it needs Firebase's paid
+// plan) — tapping it still falls back to WhatsApp for now, so no interest
+// is lost while that's pending. Facebook sign-in has been removed.
 //
 // EMAILJS SETUP: fill in your three EmailJS values below. You already have
 // your Public Key — paste your Service ID and Template ID in too once
@@ -199,6 +198,79 @@ function wireAuthPanel() {
       note.textContent = `${provider} sign-in is being connected — we've opened WhatsApp so we can set you up personally in the meantime.`;
     });
   });
+
+  // -------------------------------------------------------------------------
+  // Logged-in state: swap the profile icon for the person's initial, and
+  // swap the panel's content from the Sign In/Create Account form to a
+  // simple "who am I, sign out" view whenever someone is actually signed in.
+  // -------------------------------------------------------------------------
+  const accountView = document.getElementById('account-view');
+  const accountAvatar = document.getElementById('account-avatar');
+  const accountName = document.getElementById('account-name');
+  const accountEmail = document.getElementById('account-email');
+  const signOutBtn = document.getElementById('sign-out-btn');
+  const authTabs = document.querySelector('.auth-tabs');
+  const profileInitial = document.getElementById('nav-profile-initial');
+
+  function applySignedInUI(user) {
+    const label = user.displayName || user.email || '?';
+    const initial = label.trim().charAt(0).toUpperCase();
+
+    [profileBtn].forEach(btn => {
+      if (!btn) return;
+      btn.classList.add('is-signed-in');
+    });
+    if (profileInitial) profileInitial.textContent = initial;
+
+    if (accountAvatar) accountAvatar.textContent = initial;
+    if (accountName) accountName.textContent = user.displayName || 'Your Account';
+    if (accountEmail) accountEmail.textContent = user.email || '';
+
+    form.hidden = true;
+    if (authTabs) authTabs.hidden = true;
+    accountView.hidden = false;
+  }
+
+  function applySignedOutUI() {
+    [profileBtn].forEach(btn => {
+      if (!btn) return;
+      btn.classList.remove('is-signed-in');
+    });
+
+    form.hidden = false;
+    if (authTabs) authTabs.hidden = false;
+    accountView.hidden = true;
+  }
+
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', async () => {
+      if (!window.zentapFirebase || !window.zentapFirebase.ready) return;
+      signOutBtn.disabled = true;
+      try {
+        await window.zentapFirebase.signOut(window.zentapFirebase.auth);
+        closePanel();
+      } catch (err) {
+        console.error(err);
+      } finally {
+        signOutBtn.disabled = false;
+      }
+    });
+  }
+
+  function watchAuthState() {
+    if (!window.zentapFirebase || !window.zentapFirebase.ready) {
+      // Firebase hasn't finished loading yet — try again shortly rather
+      // than silently never showing the logged-in state.
+      window.addEventListener('zentap-firebase-ready', watchAuthState, { once: true });
+      return;
+    }
+    const fb = window.zentapFirebase;
+    fb.onAuthStateChanged(fb.auth, (user) => {
+      if (user) applySignedInUI(user);
+      else applySignedOutUI();
+    });
+  }
+  watchAuthState();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
