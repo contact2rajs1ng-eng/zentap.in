@@ -202,25 +202,8 @@ section{ padding:96px 0; }
 }
 
 /* ==========================================================================
-   HERO — decorative brand corner swooshes (matches Zentap card artwork)
+   HERO
    ========================================================================== */
-.hero::before, .hero::after{
-  content:'';
-  position:absolute;
-  width:120px; height:120px;
-  z-index:0;
-}
-.hero::before{
-  top:0; left:0;
-  background:linear-gradient(135deg, var(--copper), var(--copper-dk));
-  clip-path:polygon(0 0, 100% 0, 0 100%);
-}
-.hero::after{
-  bottom:0; right:0;
-  background:linear-gradient(315deg, var(--copper-lt), var(--copper));
-  clip-path:polygon(100% 100%, 100% 0, 0 100%);
-  opacity:.85;
-}
 .hero .wrap{ position:relative; z-index:1; }
 
 /* ==========================================================================
