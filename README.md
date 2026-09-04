@@ -22,7 +22,7 @@ zentap.in/
 
 ## Your real brand info is already wired in
 
-Your WhatsApp number (+91 88537 97074), email (contact2taki@gmail.com),
+Your WhatsApp number (+91 88537 97074), email (Zentap.office@gmail.com),
 Instagram (@zentap.in) and logo are already in every page. If any of
 these change later:
 
