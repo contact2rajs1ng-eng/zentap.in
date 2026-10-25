@@ -849,3 +849,52 @@ section{ padding:96px 0; }
 .icon-btn.is-signed-in svg{ display:none; }
 .icon-btn-initial{ display:none; }
 .icon-btn.is-signed-in .icon-btn-initial{ display:block; }
+
+/* ==========================================================================
+   ABOUT / FOUNDER SECTION
+   ========================================================================== */
+.founder-grid{ display:grid; grid-template-columns:340px 1fr; gap:56px; align-items:start; }
+.founder-card{
+  background:var(--ink); border:1px solid var(--line-dark); border-radius:var(--radius-md);
+  padding:32px 28px; text-align:center; color:var(--paper-text);
+}
+.founder-image-wrapper{
+  position:relative; width:170px; height:170px; margin:0 auto 20px;
+  border-radius:50%; overflow:hidden; border:3px solid var(--copper);
+  background:linear-gradient(135deg, var(--copper-lt), var(--copper-dk));
+  display:flex; align-items:center; justify-content:center;
+}
+.founder-initial{ font-family:'Space Grotesk',sans-serif; font-size:64px; font-weight:700; color:#fff; }
+.founder-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.founder-name{ font-size:1.45rem; color:#fff; margin-bottom:4px; }
+.founder-role{ font-size:.95rem; color:var(--muted-dark); margin-bottom:26px; }
+.social-heading{
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted-dark); margin-bottom:12px; text-align:left;
+}
+.social-heading.brand-space{ margin-top:22px; }
+.social-pills{ display:flex; flex-wrap:wrap; gap:8px; }
+.pill-btn{
+  display:inline-block; padding:6px 13px; font-size:.8rem; color:var(--paper-text);
+  background:var(--graphite); border:1px solid var(--line-dark); border-radius:99px;
+  transition:background .18s ease, color .18s ease, border-color .18s ease, transform .15s ease;
+}
+.pill-btn:hover{ background:var(--copper); border-color:var(--copper); color:#fff; transform:translateY(-1px); }
+.pill-btn:active{ transform:scale(.96); }
+.pill-btn.brand{ border-color:var(--copper-lt); color:var(--copper-lt); }
+.pill-btn.brand:hover{ background:var(--copper-lt); color:var(--ink); }
+.founder-title{ font-size:clamp(28px,4vw,40px); line-height:1.15; margin-bottom:24px; }
+.bio-text{ font-size:1.05rem; line-height:1.8; color:var(--muted); margin-bottom:20px; }
+.bio-text strong{ color:var(--ink); }
+@media (max-width:860px){
+  .founder-grid{ grid-template-columns:1fr; gap:40px; }
+  .founder-card{ max-width:420px; margin:0 auto; width:100%; }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL (kept last so it wins over each component's own transition;
+   JS removes the class again once the entrance finishes so hover effects
+   go back to normal)
+   ========================================================================== */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1); }
+.reveal.in-view{ opacity:1; transform:translateY(0); }

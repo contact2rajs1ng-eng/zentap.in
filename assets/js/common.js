@@ -273,6 +273,44 @@ function wireAuthPanel() {
   watchAuthState();
 }
 
+// ---------------------------------------------------------------------------
+// Scroll reveal: fades and lifts key elements into place as they enter the
+// viewport, staggered slightly within each group. Tagged automatically here,
+// so no markup changes are needed. Once an element has finished its entrance
+// the reveal classes are removed again, so normal hover effects are untouched.
+// ---------------------------------------------------------------------------
+function initScrollReveal() {
+  const selectors = ['.section-head', '.card', '.theme-card', '.step', '.layer', '.plan',
+    '.compare-col', '.mf-item', '.contact-info .item', '.founder-card', '.founder-bio'];
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${Math.min(i, 6) * 70}ms`;
+    });
+  });
+
+  const targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(el => { el.classList.remove('reveal'); el.style.transitionDelay = ''; });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('in-view');
+      observer.unobserve(el);
+      setTimeout(() => {
+        el.classList.remove('reveal', 'in-view');
+        el.style.transitionDelay = '';
+      }, 1200);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(el => observer.observe(el));
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await includeHTML('site-header', 'partials/header.html');
   await includeHTML('site-footer', 'partials/footer.html');
@@ -289,4 +327,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   wireMobileNav();
   wireBackButton();
   wireAuthPanel();
+  initScrollReveal();
 });

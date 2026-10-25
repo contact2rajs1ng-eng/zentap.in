@@ -145,3 +145,11 @@ Without this step, every sign-in attempt fails with an
 already filled in, but the `EMAILJS_TEMPLATE_ID` is still a placeholder.
 Once you've created your email template (EmailJS dashboard → Email
 Templates) and have its ID, send it over and it'll be the last piece.
+
+## Founder / About page
+
+`about.html` holds the founder section. To show Chandan's photo, save it as
+`assets/img/chandan-prajapati.jpg` (square, at least 400x400 works best).
+Until that file exists, a gold circle with the letter "C" shows instead.
+The About link is in `partials/header.html` and `partials/footer.html`, and the
+page is listed in `sitemap.xml`.

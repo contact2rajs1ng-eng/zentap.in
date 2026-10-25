@@ -29,23 +29,51 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Zentap",
-  "alternateName": "Zentap.in",
-  "url": "https://zentap.in/",
-  "logo": "https://zentap.in/assets/img/logo-icon.png",
-  "description": "Custom NFC business cards and digital profile platform for professionals and businesses in India.",
-  "areaServed": "IN",
-  "sameAs": [
-    "https://www.instagram.com/zentap.in/"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "email": "Zentap.office@gmail.com",
-    "telephone": "+91-88537-97074",
-    "areaServed": "IN"
-  }
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://zentap.in/#founder",
+      "name": "Chandan Prajapati",
+      "jobTitle": "Founder",
+      "description": "Founder of ZENTAP, technologist, and digital creator specializing in NFC technology, FinTech, and AI.",
+      "url": "https://zentap.in/about.html",
+      "worksFor": {
+        "@id": "https://zentap.in/#organization"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/chandanprajapati",
+        "https://x.com/Chandanpjp",
+        "https://www.instagram.com/Chandanpjp",
+        "https://www.facebook.com/share/1efp6wzVda/",
+        "https://youtube.com/@innerxframe"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://zentap.in/#organization",
+      "name": "ZENTAP",
+      "alternateName": "Zentap.in",
+      "url": "https://zentap.in/",
+      "logo": "https://zentap.in/assets/img/logo-icon.png",
+      "description": "Custom NFC business cards and digital profile platform for professionals and businesses in India.",
+      "areaServed": "IN",
+      "founder": {
+        "@id": "https://zentap.in/#founder"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/zentapnfc",
+        "https://www.instagram.com/Zentap.in",
+        "https://youtube.com/@zentapteam"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "Zentap.office@gmail.com",
+        "telephone": "+91-88537-97074",
+        "areaServed": "IN"
+      }
+    }
+  ]
 }
 </script>
 </head>
